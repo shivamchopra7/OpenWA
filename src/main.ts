@@ -1,9 +1,10 @@
 import { NestFactory } from '@nestjs/core';
 import { ValidationPipe } from '@nestjs/common';
-import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
+import { SwaggerModule } from '@nestjs/swagger';
 import helmet from 'helmet';
 import { AppModule } from './app.module';
 import { ShutdownService } from './common/services/shutdown.service';
+import { createSwaggerConfig } from './config/swagger.config';
 import { BullBoardAuthMiddleware } from './common/security/bull-board-auth.middleware';
 import { AuthService } from './modules/auth/auth.service';
 import { Request, Response, NextFunction } from 'express';
@@ -144,20 +145,7 @@ async function bootstrap() {
   );
 
   // Swagger documentation
-  const config = new DocumentBuilder()
-    .setTitle('OpenWA API')
-    .setDescription('Open Source WhatsApp API Gateway - Free, Self-Hosted HTTP API')
-    .setVersion('0.1.6')
-    .addApiKey({ type: 'apiKey', name: 'X-API-Key', in: 'header' }, 'X-API-Key')
-    .addTag('sessions', 'WhatsApp session management')
-    .addTag('messages', 'Send and manage messages')
-    .addTag('webhooks', 'Webhook configuration')
-    .addTag('contacts', 'Contact management')
-    .addTag('groups', 'Group management')
-    .addTag('labels', 'Label management (WhatsApp Business)')
-    .addTag('channels', 'Channel/Newsletter management')
-    .addTag('health', 'Health check endpoints')
-    .build();
+  const config = createSwaggerConfig();
 
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api/docs', app, document);

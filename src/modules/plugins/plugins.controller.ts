@@ -1,10 +1,9 @@
 import { Controller, Get, Post, Put, Param, Body, HttpCode, HttpStatus } from '@nestjs/common';
-import { ApiTags, ApiOperation, ApiResponse, ApiBearerAuth } from '@nestjs/swagger';
+import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { PluginsService } from './plugins.service';
 import { PluginDto, PluginConfigDto } from './dto/plugin.dto';
 
 @ApiTags('plugins')
-@ApiBearerAuth()
 @Controller('plugins')
 export class PluginsController {
   constructor(private readonly pluginsService: PluginsService) {}
