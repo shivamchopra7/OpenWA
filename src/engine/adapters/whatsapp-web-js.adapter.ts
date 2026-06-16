@@ -2,6 +2,7 @@ import { EventEmitter } from 'events';
 import { Client, LocalAuth, MessageMedia, MessageTypes } from 'whatsapp-web.js';
 import * as qrcode from 'qrcode';
 import * as path from 'path';
+import * as os from 'os';
 import {
   IWhatsAppEngine,
   EngineStatus,
@@ -161,6 +162,14 @@ export class WhatsAppWebJsAdapter extends EventEmitter implements IWhatsAppEngin
         '--no-zygote',
         '--disable-gpu',
       ];
+
+      // Give Chromium an explicit, writable crash-dumps dir so its crashpad handler always gets a
+      // --database. On some hardened/container hosts Chromium otherwise fails to launch with
+      // "chrome_crashpad_handler: --database is required" (#254/#242). Skipped if the operator
+      // already supplied their own --crash-dumps-dir via PUPPETEER_ARGS.
+      if (!puppeteerArgs.some(a => a.startsWith('--crash-dumps-dir'))) {
+        puppeteerArgs.push(`--crash-dumps-dir=${path.join(os.tmpdir(), 'openwa-crashpad')}`);
+      }
 
       // Add proxy configuration if provided
       if (this.config.proxy) {
@@ -422,6 +431,18 @@ export class WhatsAppWebJsAdapter extends EventEmitter implements IWhatsAppEngin
 
   getQRCode(): string | null {
     return this.qrCode;
+  }
+
+  /**
+   * Request an 8-char pairing code so the user can link via "Link with phone number" instead of
+   * scanning the QR. Must be called after the engine has started (the client is initialized and
+   * waiting to link); whatsapp-web.js throws if called before it is ready or after authentication.
+   */
+  async requestPairingCode(phoneNumber: string): Promise<string> {
+    if (!this.client) {
+      throw new EngineNotReadyError();
+    }
+    return this.client.requestPairingCode(phoneNumber);
   }
 
   getPhoneNumber(): string | null {
