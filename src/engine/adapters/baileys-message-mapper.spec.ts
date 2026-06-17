@@ -79,6 +79,8 @@ describe('buildIncomingMessageFromBaileys', () => {
     expect(r.isGroup).toBe(true);
     expect(r.author).toBe('628222@s.whatsapp.net');
     expect(r.chatId).toBe('123-456@g.us');
+    expect(r.from).toBe('123-456@g.us'); // group inbound: from is the group JID (mirrors wwjs)
+    expect(r.to).toBe('628999@s.whatsapp.net'); // recipient is self
   });
 
   it('flags an @lid 1:1 sender', () => {
