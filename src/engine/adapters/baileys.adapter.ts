@@ -485,6 +485,29 @@ export class BaileysAdapter implements IWhatsAppEngine {
     }
   }
 
+  async sendSeen(chatId: string): Promise<boolean> {
+    this.ensureReady();
+    const last = this.sessionStore.lastMessage(chatId);
+    if (!last) {
+      return false; // nothing known to mark read
+    }
+    await this.sock!.readMessages([last.key]);
+    return true;
+  }
+
+  async deleteChat(chatId: string): Promise<boolean> {
+    this.ensureReady();
+    const last = this.sessionStore.lastMessage(chatId);
+    if (!last) {
+      return false; // Baileys' delete needs the last message; can't synthesize it
+    }
+    await this.sock!.chatModify(
+      { delete: true, lastMessages: [{ key: last.key, messageTimestamp: last.timestamp }] },
+      chatId,
+    );
+    return true;
+  }
+
   // ----- Gated: not supported by this minimal slice (no store) -----
   /* eslint-disable @typescript-eslint/no-unused-vars */
 
@@ -556,12 +579,6 @@ export class BaileysAdapter implements IWhatsAppEngine {
   }
   sendCatalog(_chatId: string, _body?: string): Promise<MessageResult> {
     return this.unsupported('sendCatalog');
-  }
-  sendSeen(_chatId: string): Promise<boolean> {
-    return this.unsupported('sendSeen');
-  }
-  deleteChat(_chatId: string): Promise<boolean> {
-    return this.unsupported('deleteChat');
   }
   /* eslint-enable @typescript-eslint/no-unused-vars */
 

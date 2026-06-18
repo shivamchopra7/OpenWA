@@ -162,9 +162,9 @@ describe('BaileysAdapter lifecycle & status', () => {
 });
 
 describe('BaileysAdapter capability gating', () => {
-  it('throws EngineNotSupportedError for still-gated methods (e.g. sendSeen)', async () => {
+  it('throws EngineNotSupportedError for still-gated methods (e.g. getChatHistory)', async () => {
     const adapter = newAdapter();
-    await expect(adapter.sendSeen('628111@s.whatsapp.net')).rejects.toBeInstanceOf(EngineNotSupportedError);
+    await expect(adapter.getChatHistory('628111@s.whatsapp.net')).rejects.toBeInstanceOf(EngineNotSupportedError);
   });
 });
 
@@ -720,5 +720,69 @@ describe('BaileysAdapter contact + chat reads', () => {
     const adapter = newAdapter();
     await adapter.initialize({});
     await expect(adapter.getContacts()).rejects.toBeInstanceOf(EngineNotReadyError);
+  });
+});
+
+describe('BaileysAdapter sendSeen + deleteChat', () => {
+  beforeEach(() => {
+    fakeSock.user = { id: '628999:1@s.whatsapp.net', name: 'Me' };
+    jest.clearAllMocks();
+  });
+
+  const readyWithMessage = async (): Promise<BaileysAdapter> => {
+    const adapter = newAdapter();
+    await adapter.initialize({});
+    fakeSock.fire('connection.update', { connection: 'open' });
+    fakeSock.fire('messages.upsert', {
+      type: 'notify',
+      messages: [
+        {
+          key: { remoteJid: '628111@s.whatsapp.net', fromMe: false, id: 'M1' },
+          message: { conversation: 'hi' },
+          messageTimestamp: 1700000020,
+        },
+      ],
+    });
+    return adapter;
+  };
+
+  it('sendSeen marks the last message read and returns true', async () => {
+    const adapter = await readyWithMessage();
+    const ok = await adapter.sendSeen('628111@s.whatsapp.net');
+    expect(ok).toBe(true);
+    expect(fakeSock.readMessages).toHaveBeenCalledWith([
+      { remoteJid: '628111@s.whatsapp.net', fromMe: false, id: 'M1' },
+    ]);
+  });
+
+  it('sendSeen returns false when no last message is known', async () => {
+    const adapter = newAdapter();
+    await adapter.initialize({});
+    fakeSock.fire('connection.update', { connection: 'open' });
+    expect(await adapter.sendSeen('628999@s.whatsapp.net')).toBe(false);
+    expect(fakeSock.readMessages).not.toHaveBeenCalled();
+  });
+
+  it('deleteChat revokes the chat via chatModify with the last message', async () => {
+    const adapter = await readyWithMessage();
+    const ok = await adapter.deleteChat('628111@s.whatsapp.net');
+    expect(ok).toBe(true);
+    expect(fakeSock.chatModify).toHaveBeenCalledWith(
+      {
+        delete: true,
+        lastMessages: [
+          { key: { remoteJid: '628111@s.whatsapp.net', fromMe: false, id: 'M1' }, messageTimestamp: 1700000020 },
+        ],
+      },
+      '628111@s.whatsapp.net',
+    );
+  });
+
+  it('deleteChat returns false when no last message is known', async () => {
+    const adapter = newAdapter();
+    await adapter.initialize({});
+    fakeSock.fire('connection.update', { connection: 'open' });
+    expect(await adapter.deleteChat('628999@s.whatsapp.net')).toBe(false);
+    expect(fakeSock.chatModify).not.toHaveBeenCalled();
   });
 });
