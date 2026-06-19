@@ -169,6 +169,7 @@ export class WebhookService {
     }
 
     try {
+<<<<<<< Updated upstream
       return await withSafeFetch(
         webhook.url,
         {
@@ -181,6 +182,35 @@ export class WebhookService {
         response => ({ success: response.ok, statusCode: response.status }),
         { guard: isSsrfProtectionEnabled() },
       );
+=======
+      if (ssrfProtected) {
+        await assertSafeFetchUrl(webhook.url);
+      }
+      const response = await fetch(webhook.url, {
+        method: 'POST',
+        headers,
+        body,
+        signal: AbortSignal.timeout(10000),
+        redirect: ssrfProtected ? 'manual' : 'follow',
+      });
+      if (ssrfProtected) {
+        assertNoRedirect(response, webhook.url);
+      }
+
+      if (!response.ok) {
+        const statusText = response.statusText || 'Unknown';
+        return {
+          success: false,
+          statusCode: response.status,
+          error: `Remote endpoint returned HTTP ${response.status} ${statusText}. Verify the webhook URL is correct and the server is listening for POST requests.`,
+        };
+      }
+
+      return {
+        success: true,
+        statusCode: response.status,
+      };
+>>>>>>> Stashed changes
     } catch (error) {
       return {
         success: false,

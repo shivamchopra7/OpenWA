@@ -1,40 +1,58 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
 
 :root {
-  --primary: #25d366;
-  --primary-hover: #1da851;
-  --bg-light: #f8fafc;
-  --bg-white: #ffffff;
-  --bg-card: #ffffff;
-  --text-primary: #0f172a; /* Slate 900 */
-  --text-secondary: #475569; /* Slate 600 */
-  --text-muted: #94a3b8; /* Slate 400 */
-  --border: #e2e8f0; /* Slate 200 */
-  --error: #ef4444;
-  --success: #22c55e;
+  /* WhatsApp Web — light theme */
+  --primary: #00a884; /* WhatsApp green accent */
+  --primary-hover: #008069; /* darker green (hover) */
+  --primary-soft: rgba(0, 168, 132, 0.12); /* green tint for active/nav/badges/focus */
+  --on-primary: #ffffff; /* text/icon ON green fills */
+
+  --bg-light: #f0f2f5; /* page background */
+  --bg-white: #ffffff; /* sidebar / base panels */
+  --bg-card: #ffffff; /* cards, header bar, tables, elevated surfaces */
+  --bg-hover: #f0f2f5; /* hover states, inputs, secondary surface */
+  --text-primary: #111b21;
+  --text-secondary: #667781;
+  --text-muted: #8696a0;
+  --border: #e9edef;
+  --error: #ea4335;
+  --success: #008069;
   --warning: #f59e0b;
-  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-  --radius: 10px;
+
+  --shadow-sm: 0 1px 2px rgba(11, 20, 26, 0.06);
+  --shadow-md: 0 4px 16px rgba(11, 20, 26, 0.08);
+  --shadow-lg: 0 12px 40px rgba(11, 20, 26, 0.14);
+
+  --radius: 8px; /* buttons, inputs, nav items */
+  --radius-lg: 12px; /* cards / panels */
+  --radius-pill: 9999px; /* status pills, badges, avatars, FAB */
+  --font-sans: 'Inter', 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
-/* Dark Mode */
+/* Dark Mode (authentic WhatsApp Web dark) — PRIMARY theme */
 [data-theme='dark'] {
   /* Make native controls (select option popups, scrollbars, date pickers) follow the EXPLICIT
      app theme, not just the OS preference — otherwise toggling dark while the OS is light left
      native dropdowns rendered in the light scheme (#249). */
   color-scheme: dark;
-  --bg-light: #0f172a; /* Slate 900 */
-  --bg-white: #1e293b; /* Slate 800 */
-  --bg-card: #1e293b;
-  --text-primary: #f1f5f9; /* Slate 100 */
-  --text-secondary: #cbd5e1; /* Slate 300 */
-  --text-muted: #64748b; /* Slate 500 */
-  --border: #334155; /* Slate 700 */
-  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
-  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.3), 0 2px 4px -2px rgb(0 0 0 / 0.3);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.4), 0 4px 6px -4px rgb(0 0 0 / 0.4);
+  --primary: #00a884;
+  --primary-hover: #06cf9c;
+  --primary-soft: rgba(0, 168, 132, 0.18);
+  --on-primary: #ffffff;
+  --bg-light: #0b141a; /* deepest content background */
+  --bg-white: #111b21; /* sidebar / base panels */
+  --bg-card: #202c33; /* cards, header bar, tables, elevated surfaces */
+  --bg-hover: #2a3942; /* hover states, inputs, secondary surface */
+  --text-primary: #e9edef;
+  --text-secondary: #8696a0;
+  --text-muted: #6a7a83;
+  --border: rgba(134, 150, 160, 0.15);
+  --success: #00a884;
+  --error: #f15c6d;
+  --warning: #ffbc38;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.55);
 }
 
 /* Explicit light toggle: keep native controls light even if the OS prefers dark. */
@@ -49,16 +67,114 @@
        The Login screen never sets data-theme, so it relies solely on this block — without an
        explicit color-scheme the popup rendered light, leaving the light option text illegible (#249). */
     color-scheme: dark;
-    --bg-light: #0f172a;
-    --bg-white: #1e293b;
-    --bg-card: #1e293b;
-    --text-primary: #f1f5f9;
-    --text-secondary: #cbd5e1;
-    --text-muted: #64748b;
-    --border: #334155;
-    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
-    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.3), 0 2px 4px -2px rgb(0 0 0 / 0.3);
-    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.4), 0 4px 6px -4px rgb(0 0 0 / 0.4);
+    --primary: #00a884;
+    --primary-hover: #06cf9c;
+    --primary-soft: rgba(0, 168, 132, 0.18);
+    --on-primary: #ffffff;
+    --bg-light: #0b141a;
+    --bg-white: #111b21;
+    --bg-card: #202c33;
+    --bg-hover: #2a3942;
+    --text-primary: #e9edef;
+    --text-secondary: #8696a0;
+    --text-muted: #6a7a83;
+    --border: rgba(134, 150, 160, 0.15);
+    --success: #00a884;
+    --error: #f15c6d;
+    --warning: #ffbc38;
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.55);
+  }
+}
+
+/* ============================================================
+   DASHBOARD-SCOPED COLORFUL ACCENT PALETTE
+   Additive + theme-aware. Scoped to `.dashboard` so the vibrant
+   multi-accent system is used ONLY by the Dashboard page — every
+   other page keeps the WhatsApp-green base theme untouched.
+   Light base = pastel row fills (reference look); dark = vibrant
+   accents on dark cards. Hero KPI card stays dark in both themes.
+   ============================================================ */
+.dashboard {
+  /* Saturated accents (dots, lines, highlighted values) */
+  --c-blue: #2f6df4;
+  --c-purple: #8b5cf6;
+  --c-pink: #ec4899;
+  --c-yellow: #d97706;
+  --c-green: #10b981;
+  /* Soft category-row / badge tints (pastel in light mode) */
+  --c-blue-soft: #e7effe;
+  --c-purple-soft: #efe9fe;
+  --c-pink-soft: #fde6f1;
+  --c-yellow-soft: #fdf1da;
+  --c-green-soft: #dcf5ec;
+  /* Delta directions */
+  --c-up: #16a34a;
+  --c-up-soft: #dcf7e6;
+  --c-down: #e0457b;
+  --c-down-soft: #fde4ec;
+  /* Hero KPI card — dark + elevated in both themes (ref "Total Sales") */
+  --dash-hero-bg: linear-gradient(155deg, #1f2a37 0%, #111b21 100%);
+  --dash-hero-text: #f4f7f9;
+  --dash-hero-muted: #9fb0bb;
+  --dash-hero-ring: rgba(91, 141, 239, 0.5);
+  /* Generic chart grid / axis */
+  --dash-grid: rgba(134, 150, 160, 0.18);
+  --dash-tooltip-bg: #111b21;
+  --dash-tooltip-text: #e9edef;
+  --dash-tooltip-border: rgba(134, 150, 160, 0.28);
+}
+
+[data-theme='dark'] .dashboard {
+  --c-blue: #5b8def;
+  --c-purple: #a78bfa;
+  --c-pink: #f472b6;
+  --c-yellow: #fbbf24;
+  --c-green: #34d399;
+  --c-blue-soft: rgba(91, 141, 239, 0.16);
+  --c-purple-soft: rgba(167, 139, 250, 0.16);
+  --c-pink-soft: rgba(244, 114, 182, 0.16);
+  --c-yellow-soft: rgba(251, 191, 36, 0.16);
+  --c-green-soft: rgba(52, 211, 153, 0.16);
+  --c-up: #34d399;
+  --c-up-soft: rgba(52, 211, 153, 0.18);
+  --c-down: #f472b6;
+  --c-down-soft: rgba(244, 114, 182, 0.18);
+  --dash-hero-bg: linear-gradient(155deg, #16323a 0%, #0b141a 100%);
+  --dash-hero-text: #f4f7f9;
+  --dash-hero-muted: #8aa0ab;
+  --dash-hero-ring: rgba(52, 211, 153, 0.45);
+  --dash-grid: rgba(134, 150, 160, 0.16);
+  --dash-tooltip-bg: #0b141a;
+  --dash-tooltip-text: #e9edef;
+  --dash-tooltip-border: rgba(134, 150, 160, 0.28);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) .dashboard {
+    --c-blue: #5b8def;
+    --c-purple: #a78bfa;
+    --c-pink: #f472b6;
+    --c-yellow: #fbbf24;
+    --c-green: #34d399;
+    --c-blue-soft: rgba(91, 141, 239, 0.16);
+    --c-purple-soft: rgba(167, 139, 250, 0.16);
+    --c-pink-soft: rgba(244, 114, 182, 0.16);
+    --c-yellow-soft: rgba(251, 191, 36, 0.16);
+    --c-green-soft: rgba(52, 211, 153, 0.16);
+    --c-up: #34d399;
+    --c-up-soft: rgba(52, 211, 153, 0.18);
+    --c-down: #f472b6;
+    --c-down-soft: rgba(244, 114, 182, 0.18);
+    --dash-hero-bg: linear-gradient(155deg, #16323a 0%, #0b141a 100%);
+    --dash-hero-text: #f4f7f9;
+    --dash-hero-muted: #8aa0ab;
+    --dash-hero-ring: rgba(52, 211, 153, 0.45);
+    --dash-grid: rgba(134, 150, 160, 0.16);
+    --dash-tooltip-bg: #0b141a;
+    --dash-tooltip-text: #e9edef;
+    --dash-tooltip-border: rgba(134, 150, 160, 0.28);
   }
 }
 
@@ -68,15 +184,7 @@
 
 body {
   margin: 0;
-  font-family:
-    'Plus Jakarta Sans',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    Helvetica,
-    Arial,
-    sans-serif;
+  font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: var(--bg-light);
@@ -92,7 +200,7 @@ input,
 select,
 textarea {
   font-family: inherit;
-  background: var(--bg-white);
+  background: var(--bg-hover);
   color: var(--text-primary);
   border-color: var(--border);
 }
@@ -108,9 +216,9 @@ a:hover {
 
 /* Error banner — shared across pages (moved out of Plugins.css so any page can use it). */
 .error-banner {
-  background: rgba(239, 68, 68, 0.1);
-  border: 1px solid rgba(239, 68, 68, 0.3);
-  border-radius: 8px;
+  background: color-mix(in srgb, var(--error) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--error) 30%, transparent);
+  border-radius: var(--radius);
   padding: 1rem;
   margin-bottom: 1.5rem;
   display: flex;
@@ -119,9 +227,144 @@ a:hover {
 }
 
 .error-banner svg {
-  color: #ef4444;
+  color: var(--error);
 }
 
 .error-banner-text {
-  color: #ef4444;
+  color: var(--error);
+}
+
+/* ============================================================
+   POLISH PASS — centralized global interaction & loading styles
+   (custom scrollbars, press/focus states, skeletons, reduced motion).
+   Kept here so page CSS stays free of cross-cutting concerns.
+   ============================================================ */
+
+/* Theme-aware scrollbar thumb tokens (WhatsApp Web grey on dark) */
+:root {
+  --scrollbar-thumb: rgba(0, 0, 0, 0.2);
+  --scrollbar-thumb-hover: rgba(0, 0, 0, 0.32);
+}
+[data-theme='dark'] {
+  --scrollbar-thumb: rgba(134, 150, 160, 0.3);
+  --scrollbar-thumb-hover: rgba(134, 150, 160, 0.45);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --scrollbar-thumb: rgba(134, 150, 160, 0.3);
+    --scrollbar-thumb-hover: rgba(134, 150, 160, 0.45);
+  }
+}
+
+/* Custom scrollbars — thin, transparent track, rounded theme-aware thumb */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) transparent;
+}
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: var(--radius-pill);
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+  background-clip: padding-box;
+}
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* Subtle press feedback on buttons (transition already defined per-button) */
+.btn-primary:active,
+.btn-secondary:active,
+.btn-sm:active,
+.btn-icon:active,
+.btn-action:active,
+.btn-toggle:active,
+.btn-danger:active,
+.btn-close:active,
+.theme-toggle-btn:active,
+.logout-btn:active {
+  transform: translateY(1px);
+}
+.btn-primary:disabled:active,
+.btn-secondary:disabled:active,
+.btn-sm:disabled:active,
+.btn-toggle:disabled:active {
+  transform: none;
+}
+
+/* Visible keyboard focus ring — additive; leaves existing input/select rings intact */
+a:focus-visible,
+.nav-item:focus-visible,
+.btn-primary:focus-visible,
+.btn-secondary:focus-visible,
+.btn-sm:focus-visible,
+.btn-icon:focus-visible,
+.btn-action:focus-visible,
+.btn-toggle:focus-visible,
+.btn-danger:focus-visible,
+.btn-close:focus-visible,
+.theme-toggle-btn:focus-visible,
+.logout-btn:focus-visible,
+[role='button']:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* Hover elevation on clickable cards (mirrors stat-card / plugin-card lift) */
+.session-card {
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+.session-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Shimmer skeleton — subtle on-theme sweep using --bg-card / --bg-hover */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--bg-card) 25%,
+    var(--bg-hover) 37%,
+    var(--bg-card) 63%
+  );
+  background-size: 400% 100%;
+  animation: skeleton-shimmer 1.4s ease infinite;
+  border-radius: var(--radius);
+}
+.skeleton-line {
+  height: 0.75rem;
+  border-radius: var(--radius-pill);
+}
+@keyframes skeleton-shimmer {
+  0% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

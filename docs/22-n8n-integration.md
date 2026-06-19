@@ -258,6 +258,32 @@ Always use the correct format for chat IDs:
 3. Check firewall/proxy settings
 4. Ensure session is connected and active
 
+### Webhook Test Returns HTTP 404
+
+OpenWA's **Test** button POSTs a sample payload directly to the URL you configured. A `404` means **n8n rejected the request** — OpenWA reached the host, but no webhook was listening at that path.
+
+| n8n URL type | Path pattern | When it works |
+| ------------ | ------------ | ------------- |
+| **Production** | `https://<instance>/webhook/<path>` | Workflow is **Active** (toggle on) |
+| **Test** | `https://<instance>/webhook-test/<path>` | Workflow editor is open **and** you clicked **Listen for test event** |
+
+Common fixes:
+
+1. **Production URL** — Activate the workflow, then copy the **Production URL** from the Webhook node (not the Test URL).
+2. **Test URL** — In the n8n editor, click **Listen for test event** on the Webhook node, then run OpenWA Test within the listening window.
+3. **Wrong path** — The path segment after `/webhook/` or `/webhook-test/` must match the Webhook node's configured path exactly.
+4. **Cloud vs self-hosted** — Use the URL shown in *your* n8n instance (`*.app.n8n.cloud`, Cloud Run, etc.); URLs from another deployment will 404.
+
+Verify independently:
+
+```bash
+curl -X POST "https://your-n8n.example/webhook/your-path" \
+  -H "Content-Type: application/json" \
+  -d '{"event":"test"}'
+```
+
+You should get `200` (or `204`) before OpenWA Test will succeed.
+
 ### Message Not Sending
 
 1. Verify session status is "READY"

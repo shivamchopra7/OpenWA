@@ -1,7 +1,9 @@
 {
   "common": {
-    "appName": "OpenWA",
-    "appSubtitle": "WhatsApp API",
+    "appName": "WhatsApp Marketing",
+    "appSubtitle": "illusionart 出品",
+    "disclaimer": "这不是 Meta 或 WhatsApp 的官方应用程序。它是 OpenWA 平台的增强版本。",
+    "credits": "由 illusionart AI Private Limited · illusionart 团队构建",
     "loading": "正在加载...",
     "save": "保存",
     "cancel": "取消",
@@ -124,7 +126,9 @@
     "connectionError": "无法连接到服务器。请重试。",
     "help": "需要帮助？",
     "viewDocs": "查看文档",
-    "footer": "由 Yudhi Armyndharis 和 OpenWA 社区用 ❤️ 打造",
+    "footer": "由 illusionart AI Private Limited · illusionart 团队构建",
+    "title": "WhatsApp Marketing",
+    "subtitle": "illusionart 出品的 WhatsApp API 网关",
     "version": "v{{version}} · {{date}}"
   },
   "dashboard": {
@@ -502,7 +506,7 @@
       "postgres": "PostgreSQL",
       "postgresDesc": "适用于生产的数据库",
       "useBuiltIn": "使用内置 PostgreSQL 容器",
-      "builtInDesc": "OpenWA 将为你管理 PostgreSQL 容器",
+      "builtInDesc": "WhatsApp Marketing 将为你管理 PostgreSQL 容器",
       "dbName": "数据库名称",
       "poolSize": "连接池大小",
       "ssl": "SSL 连接",
@@ -518,7 +522,7 @@
       "enable": "启用 Redis",
       "enableDesc": "缓存、会话存储和 BullMQ 队列需要 Redis",
       "useBuiltIn": "使用内置 Redis 容器",
-      "builtInDesc": "OpenWA 将为你管理 Redis 容器",
+      "builtInDesc": "WhatsApp Marketing 将为你管理 Redis 容器",
       "queueTitle": "启用 BullMQ 队列系统",
       "queueDesc": "使用消息队列可靠地投递消息和 Webhook",
       "statsTitle": "队列统计",
@@ -540,7 +544,7 @@
       "s3": "Amazon S3",
       "s3Desc": "云存储（兼容 S3）",
       "useBuiltIn": "使用内置 MinIO 容器",
-      "builtInDesc": "OpenWA 将为你管理 MinIO（兼容 S3）容器",
+      "builtInDesc": "WhatsApp Marketing 将为你管理 MinIO（兼容 S3）容器",
       "storagePath": "存储路径",
       "bucket": "存储桶名称",
       "region": "区域",
@@ -592,7 +596,7 @@
     "configure": "配置",
     "empty": {
       "title": "未找到插件",
-      "description": "安装插件以扩展 OpenWA 功能"
+      "description": "安装插件以扩展 WhatsApp Marketing 功能"
     },
     "config": {
       "title": "配置 {{name}}",

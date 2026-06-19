@@ -23,10 +23,10 @@
 
 .compose-panel,
 .response-panel {
-  background: var(--bg-white);
-  border-radius: 12px;
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
   padding: 1.5rem;
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-md);
   border: 1px solid var(--border);
 }
 
@@ -58,7 +58,7 @@
   font-size: 0.9375rem;
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  background: var(--bg-white);
+  background: var(--bg-hover);
   transition: border-color 0.2s;
 }
 
@@ -67,6 +67,7 @@
 .form-group textarea:focus {
   outline: none;
   border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-soft);
 }
 
 .form-group textarea {
@@ -93,7 +94,7 @@
   padding: 0.625rem 1rem;
   font-size: 0.875rem;
   font-weight: 500;
-  background: var(--bg-white);
+  background: var(--bg-hover);
   border: none;
   cursor: pointer;
   transition: all 0.2s;
@@ -106,7 +107,7 @@
 
 .toggle-group button.active {
   background: var(--primary);
-  color: white;
+  color: var(--on-primary);
 }
 
 .send-btn {
@@ -118,7 +119,7 @@
   padding: 0.875rem 1.5rem;
   font-size: 1rem;
   font-weight: 600;
-  color: white;
+  color: var(--on-primary);
   background: var(--primary);
   border: none;
   border-radius: var(--radius);
@@ -147,13 +148,13 @@
 }
 
 .response-status.success {
-  background: rgba(37, 211, 102, 0.1);
+  background: var(--primary-soft);
   color: var(--primary);
 }
 
 .response-status.error {
-  background: #FEE2E2;
-  color: #DC2626;
+  background: color-mix(in srgb, var(--error) 18%, transparent);
+  color: var(--error);
 }
 
 .response-details {
@@ -187,7 +188,7 @@
 }
 
 .response-json {
-  background: #1E293B;
+  background: var(--bg-hover);
   border-radius: var(--radius);
   padding: 1rem;
   overflow-x: auto;
@@ -195,7 +196,7 @@
 
 .response-json pre {
   margin: 0;
-  color: #E2E8F0;
+  color: var(--text-primary);
   font-size: 0.8125rem;
   font-family: 'JetBrains Mono', monospace;
   white-space: pre-wrap;
@@ -206,7 +207,7 @@
   align-items: center;
   justify-content: center;
   min-height: 200px;
-  background: var(--bg-light);
+  background: var(--bg-hover);
   border-radius: var(--radius);
 }
 
@@ -253,6 +254,7 @@
   .send-btn {
     font-size: 0.9375rem;
     padding: 0.75rem 1rem;
+    min-height: 44px;
   }
 
   .form-group input,
@@ -260,5 +262,11 @@
   .form-group textarea {
     font-size: 0.875rem;
     padding: 0.625rem 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .message-tester {
+    padding: 0.75rem;
   }
 }

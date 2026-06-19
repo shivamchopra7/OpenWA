@@ -499,6 +499,59 @@ describe('WebhookService', () => {
     });
   });
 
+  // ── test ───────────────────────────────────────────────────────────
+
+  describe('test', () => {
+    it('should POST a test payload to the webhook URL and return success on 2xx', async () => {
+      const webhook = createMockWebhook({ secret: 'test-secret' });
+      (repository.findOne as jest.Mock).mockResolvedValue(webhook);
+
+      const mockFetch = jest.fn().mockResolvedValue({ ok: true, status: 200, statusText: 'OK' });
+      global.fetch = mockFetch as typeof global.fetch;
+
+      const result = await service.test('sess-1', webhook.id);
+
+      expect(result).toEqual({ success: true, statusCode: 200 });
+      expect(mockFetch).toHaveBeenCalledWith(
+        webhook.url,
+        expect.objectContaining({
+          method: 'POST',
+          headers: expect.objectContaining({
+            'Content-Type': 'application/json',
+            'X-OpenWA-Event': 'test',
+            'X-OpenWA-Signature': expect.stringMatching(/^sha256=[a-f0-9]{64}$/),
+          }),
+          body: expect.stringContaining('"event":"test"'),
+        }),
+      );
+    });
+
+    it('should return a descriptive error when the remote endpoint responds with non-2xx', async () => {
+      const webhook = createMockWebhook();
+      (repository.findOne as jest.Mock).mockResolvedValue(webhook);
+
+      global.fetch = jest.fn().mockResolvedValue({ ok: false, status: 404, statusText: 'Not Found' }) as typeof global.fetch;
+
+      const result = await service.test('sess-1', webhook.id);
+
+      expect(result.success).toBe(false);
+      expect(result.statusCode).toBe(404);
+      expect(result.error).toContain('Remote endpoint returned HTTP 404');
+      expect(result.error).toContain('POST requests');
+    });
+
+    it('should return network errors from fetch', async () => {
+      const webhook = createMockWebhook();
+      (repository.findOne as jest.Mock).mockResolvedValue(webhook);
+
+      global.fetch = jest.fn().mockRejectedValue(new Error('fetch failed')) as typeof global.fetch;
+
+      const result = await service.test('sess-1', webhook.id);
+
+      expect(result).toEqual({ success: false, error: 'fetch failed' });
+    });
+  });
+
   // ── dispatch (queue mode) ─────────────────────────────────────────
 
   describe('dispatch (queue mode)', () => {

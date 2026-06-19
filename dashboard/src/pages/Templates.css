@@ -49,7 +49,7 @@
   gap: 1rem;
   padding: 1.25rem 1.5rem;
   border-bottom: 1px solid var(--border);
-  background: var(--bg-light);
+  background: var(--bg-hover);
 }
 
 .template-editor-header h2,
@@ -97,7 +97,7 @@
   padding: 0.875rem 1rem;
   border: 1px solid var(--border);
   border-radius: 8px;
-  background: var(--bg-light);
+  background: var(--bg-hover);
   color: var(--text-primary);
   font-size: 0.9375rem;
   resize: vertical;
@@ -113,8 +113,8 @@
 .placeholder-list input:focus {
   outline: none;
   border-color: var(--primary);
-  background: var(--bg-white);
-  box-shadow: 0 0 0 3px rgba(37, 211, 102, 0.1);
+  background: var(--bg-hover);
+  box-shadow: 0 0 0 3px var(--primary-soft);
 }
 
 .template-editor-actions {
@@ -155,7 +155,7 @@
   padding: 1rem;
   border: 1px solid var(--border);
   border-radius: 8px;
-  background: var(--bg-light);
+  background: var(--bg-hover);
   color: var(--text-primary);
   white-space: pre-wrap;
   word-break: break-word;
@@ -254,9 +254,9 @@
 
 .template-placeholder-tags span {
   padding: 0.25rem 0.5rem;
-  border: 1px solid rgba(37, 211, 102, 0.25);
+  border: 1px solid var(--primary-soft);
   border-radius: 6px;
-  background: rgba(37, 211, 102, 0.12);
+  background: var(--primary-soft);
   color: var(--primary);
   font-family: 'JetBrains Mono', ui-monospace, monospace;
   font-size: 0.75rem;
@@ -283,14 +283,14 @@
 }
 
 .icon-btn:hover {
-  background: var(--bg-light);
+  background: var(--bg-hover);
   color: var(--text-primary);
 }
 
 .icon-btn.danger:hover {
-  background: #fee2e2;
-  border-color: #fecaca;
-  color: #dc2626;
+  background: color-mix(in srgb, var(--error) 18%, transparent);
+  border-color: color-mix(in srgb, var(--error) 30%, transparent);
+  color: var(--error);
 }
 
 .btn-danger {
@@ -298,7 +298,7 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.75rem 1.25rem;
-  background: #dc2626;
+  background: var(--error);
   color: white;
   border: none;
   border-radius: var(--radius);
@@ -307,7 +307,7 @@
 }
 
 .btn-danger:hover {
-  background: #b91c1c;
+  background: color-mix(in srgb, var(--error) 85%, #000);
 }
 
 .toast {
@@ -326,15 +326,15 @@
 }
 
 .toast.success {
-  background: #ecfdf5;
-  border: 1px solid #a7f3d0;
-  color: #047857;
+  background: var(--primary-soft);
+  border: 1px solid color-mix(in srgb, var(--primary) 30%, transparent);
+  color: var(--primary);
 }
 
 .toast.error {
-  background: #fef2f2;
-  border: 1px solid #fecaca;
-  color: #dc2626;
+  background: color-mix(in srgb, var(--error) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--error) 30%, transparent);
+  color: var(--error);
 }
 
 .toast-close {
@@ -396,5 +396,11 @@
 
   .template-card-actions {
     justify-content: flex-end;
+  }
+}
+
+@media (max-width: 480px) {
+  .templates-page {
+    padding: 0.75rem;
   }
 }

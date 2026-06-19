@@ -120,14 +120,22 @@ export function Webhooks() {
 
   const handleTest = async (sessionId: string, id: string) => {
     setTestingId(id);
+    const webhook = webhooks.find(w => w.id === id);
     try {
       const result = await webhookApi.test(sessionId, id);
       if (result.success) {
         setToast({ type: 'success', message: t('webhooks.toasts.testOk', { status: result.statusCode }) });
       } else {
+        const baseMessage =
+          result.error ||
+          t('webhooks.toasts.testFailedRemote', { status: result.statusCode ?? t('common.unknownError') });
+        const n8nHint =
+          webhook?.url.includes('n8n') && result.statusCode === 404
+            ? ` ${t('webhooks.toasts.testFailedN8nHint')}`
+            : '';
         setToast({
           type: 'error',
-          message: t('webhooks.toasts.testFailed', { message: result.error || `Status ${result.statusCode}` }),
+          message: t('webhooks.toasts.testFailed', { message: `${baseMessage}${n8nHint}` }),
         });
       }
     } catch (err) {
@@ -355,7 +363,7 @@ export function Webhooks() {
                   display: 'block',
                   marginTop: '0.5rem',
                   padding: '0.5rem',
-                  background: 'var(--color-bg-secondary)',
+                  background: 'var(--bg-hover)',
                   borderRadius: '4px',
                   fontSize: '0.85rem',
                   wordBreak: 'break-all',

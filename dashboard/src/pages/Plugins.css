@@ -6,11 +6,12 @@
 
 /* Engine Card */
 .engine-card {
-  background: linear-gradient(135deg, rgba(34, 197, 94, 0.1) 0%, rgba(16, 185, 129, 0.1) 100%);
-  border: 1px solid rgba(34, 197, 94, 0.2);
-  border-radius: 12px;
+  background: var(--primary-soft);
+  border: 1px solid var(--primary-soft);
+  border-radius: var(--radius-lg);
   padding: 1.5rem;
   margin-bottom: 2rem;
+  box-shadow: var(--shadow-md);
 }
 
 .engine-header {
@@ -28,7 +29,7 @@
 .engine-icon-wrapper {
   width: 48px;
   height: 48px;
-  background: rgba(34, 197, 94, 0.15);
+  background: var(--primary-soft);
   border-radius: 12px;
   display: flex;
   align-items: center;
@@ -36,7 +37,7 @@
 }
 
 .engine-icon-wrapper svg {
-  color: #22c55e;
+  color: var(--primary);
 }
 
 .engine-title {
@@ -50,13 +51,13 @@
 
 .engine-name {
   font-size: 0.875rem;
-  color: #22c55e;
+  color: var(--primary);
 }
 
 .engine-features {
   margin-top: 1rem;
   padding-top: 1rem;
-  border-top: 1px solid rgba(34, 197, 94, 0.15);
+  border-top: 1px solid var(--primary-soft);
 }
 
 .features-label {
@@ -75,8 +76,8 @@
 
 .feature-tag {
   padding: 0.25rem 0.5rem;
-  background: rgba(34, 197, 94, 0.1);
-  color: #22c55e;
+  background: var(--primary-soft);
+  color: var(--primary);
   border-radius: 4px;
   font-size: 0.75rem;
 }
@@ -90,10 +91,11 @@
 
 /* Plugin Card */
 .plugin-card {
-  background: var(--bg-white);
+  background: var(--bg-card);
   border: 1px solid var(--border);
-  border-radius: 12px;
+  border-radius: var(--radius-lg);
   overflow: hidden;
+  box-shadow: var(--shadow-md);
   transition:
     transform 0.2s,
     box-shadow 0.2s;
@@ -101,7 +103,7 @@
 
 .plugin-card:hover {
   transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-lg);
 }
 
 .plugin-card-header {
@@ -111,24 +113,26 @@
   justify-content: space-between;
 }
 
+/* Category header gradients — kept within an on-theme green → teal → slate
+   family so nothing clashes with the WhatsApp green (no pink/orange/purple). */
 .plugin-card-header.type-engine {
-  background: linear-gradient(135deg, #22c55e 0%, #10b981 100%);
+  background: linear-gradient(135deg, #00a884, #015c4b);
 }
 
 .plugin-card-header.type-storage {
-  background: linear-gradient(135deg, #22c55e 0%, #10b981 100%);
+  background: linear-gradient(135deg, #159a8e, #08443f);
 }
 
 .plugin-card-header.type-queue {
-  background: linear-gradient(135deg, #f97316 0%, #f59e0b 100%);
+  background: linear-gradient(135deg, #3f7c8a, #1c3942);
 }
 
 .plugin-card-header.type-auth {
-  background: linear-gradient(135deg, #a855f7 0%, #8b5cf6 100%);
+  background: linear-gradient(135deg, #2f8f6d, #123a30);
 }
 
 .plugin-card-header.type-extension {
-  background: linear-gradient(135deg, #ec4899 0%, #f43f5e 100%);
+  background: linear-gradient(135deg, #1f8a70, #0b4a3f);
 }
 
 .plugin-info {
@@ -206,19 +210,19 @@
 }
 
 .status-dot.enabled {
-  background: #22c55e;
+  background: var(--primary);
 }
 
 .status-dot.disabled {
-  background: #eab308;
+  background: var(--warning);
 }
 
 .status-dot.error {
-  background: #ef4444;
+  background: var(--error);
 }
 
 .status-dot.installed {
-  background: #64748b;
+  background: var(--text-muted);
 }
 
 .status-text {
@@ -243,22 +247,22 @@
 
 .provides-tag {
   padding: 0.25rem 0.5rem;
-  background: var(--bg-light);
+  background: var(--bg-hover);
   color: var(--text-secondary);
   font-size: 0.75rem;
   border-radius: 4px;
 }
 
 .plugin-error {
-  background: rgba(239, 68, 68, 0.1);
-  border: 1px solid rgba(239, 68, 68, 0.2);
+  background: color-mix(in srgb, var(--error) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--error) 30%, transparent);
   border-radius: 6px;
   padding: 0.5rem 0.75rem;
   margin-bottom: 1rem;
 }
 
 .plugin-error-text {
-  color: #ef4444;
+  color: var(--error);
   font-size: 0.75rem;
 }
 
@@ -285,23 +289,23 @@
 }
 
 .btn-toggle.enable {
-  background: rgba(34, 197, 94, 0.1);
-  border: 1px solid rgba(34, 197, 94, 0.3);
-  color: #22c55e;
+  background: var(--primary-soft);
+  border: 1px solid var(--primary-soft);
+  color: var(--primary);
 }
 
 .btn-toggle.enable:hover {
-  background: rgba(34, 197, 94, 0.2);
+  background: var(--primary-soft);
 }
 
 .btn-toggle.disable {
-  background: rgba(239, 68, 68, 0.1);
-  border: 1px solid rgba(239, 68, 68, 0.3);
-  color: #ef4444;
+  background: color-mix(in srgb, var(--error) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--error) 30%, transparent);
+  color: var(--error);
 }
 
 .btn-toggle.disable:hover {
-  background: rgba(239, 68, 68, 0.2);
+  background: color-mix(in srgb, var(--error) 18%, transparent);
 }
 
 .btn-toggle:disabled {
@@ -316,9 +320,9 @@
   justify-content: center;
   gap: 0.5rem;
   padding: 0.625rem 1rem;
-  background: rgba(34, 197, 94, 0.15);
-  border: 1px solid rgba(34, 197, 94, 0.4);
-  color: #16a34a;
+  background: var(--primary-soft);
+  border: 1px solid var(--primary-soft);
+  color: var(--primary-hover);
   font-size: 0.875rem;
   font-weight: 600;
   border-radius: 8px;
@@ -332,9 +336,9 @@
   justify-content: center;
   gap: 0.5rem;
   padding: 0.625rem 1rem;
-  background: rgba(34, 197, 94, 0.1);
-  border: 1px solid rgba(34, 197, 94, 0.3);
-  color: #22c55e;
+  background: var(--primary-soft);
+  border: 1px solid var(--primary-soft);
+  color: var(--primary);
   font-size: 0.875rem;
   font-weight: 500;
   border-radius: 8px;
@@ -347,17 +351,17 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--bg-light);
+  background: var(--bg-hover);
   border: 1px solid var(--border);
-  border-radius: 8px;
+  border-radius: var(--radius);
   cursor: pointer;
   transition: all 0.2s;
   padding: 0;
 }
 
 .btn-action:hover {
-  background: var(--bg-white);
-  border-color: var(--text-muted);
+  background: var(--bg-hover);
+  border-color: var(--text-secondary);
 }
 
 .btn-action svg {
@@ -396,11 +400,11 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.75rem 1rem;
-  background: rgba(251, 191, 36, 0.1);
-  border: 1px solid rgba(251, 191, 36, 0.3);
-  border-radius: 8px;
+  background: color-mix(in srgb, var(--warning) 15%, transparent);
+  border: 1px solid color-mix(in srgb, var(--warning) 30%, transparent);
+  border-radius: var(--radius);
   margin-bottom: 1.5rem;
-  color: #d97706;
+  color: var(--warning);
   font-size: 0.875rem;
 }
 
@@ -421,9 +425,10 @@
   width: 100%;
   padding: 0.75rem 1rem;
   border: 1px solid var(--border);
-  border-radius: 8px;
+  border-radius: var(--radius);
   font-size: 0.9375rem;
-  background: var(--bg-light);
+  color: var(--text-primary);
+  background: var(--bg-hover);
   transition: all 0.2s;
   box-sizing: border-box;
 }
@@ -432,8 +437,8 @@
 .config-form .form-group select:focus {
   outline: none;
   border-color: var(--primary);
-  background: var(--bg-white);
-  box-shadow: 0 0 0 3px rgba(37, 211, 102, 0.1);
+  background: var(--bg-hover);
+  box-shadow: 0 0 0 3px var(--primary-soft);
 }
 
 .config-form .form-group small {
@@ -453,8 +458,8 @@
   align-items: center;
   justify-content: space-between;
   padding: 1rem;
-  background: var(--bg-light);
-  border-radius: 8px;
+  background: var(--bg-hover);
+  border-radius: var(--radius);
 }
 
 .toggle-info {
@@ -493,7 +498,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #cbd5e1;
+  background-color: color-mix(in srgb, var(--text-muted) 45%, transparent);
   transition: 0.3s;
   border-radius: 26px;
 }
@@ -512,7 +517,7 @@
 }
 
 .toggle-switch input:checked + .toggle-slider {
-  background-color: var(--primary, #22c55e);
+  background-color: var(--primary);
 }
 
 .toggle-switch input:checked + .toggle-slider:before {
@@ -531,10 +536,10 @@
 
 .btn-primary {
   padding: 0.75rem 1.5rem;
-  background: var(--primary, #22c55e);
-  color: white;
+  background: var(--primary);
+  color: var(--on-primary);
   border: none;
-  border-radius: 8px;
+  border-radius: var(--radius);
   font-size: 0.9375rem;
   font-weight: 600;
   cursor: pointer;
@@ -545,7 +550,7 @@
 }
 
 .btn-primary:hover {
-  background: #16a34a;
+  background: var(--primary-hover);
 }
 
 .btn-primary:disabled {
@@ -567,5 +572,21 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 1rem;
+  }
+
+  .plugin-actions {
+    flex-wrap: wrap;
+  }
+
+  .btn-toggle,
+  .btn-required,
+  .btn-active {
+    min-height: 44px;
+  }
+}
+
+@media (max-width: 480px) {
+  .plugins-page {
+    padding: 0.75rem;
   }
 }

@@ -1,7 +1,9 @@
 {
   "common": {
-    "appName": "OpenWA",
-    "appSubtitle": "WhatsApp API",
+    "appName": "WhatsApp Marketing",
+    "appSubtitle": "illusionart 出品",
+    "disclaimer": "這不是 Meta 或 WhatsApp 的官方應用程式。它是 OpenWA 平台的增強版本。",
+    "credits": "由 illusionart AI Private Limited · illusionart 團隊構建",
     "loading": "正在載入...",
     "save": "儲存",
     "cancel": "取消",
@@ -124,7 +126,9 @@
     "connectionError": "無法連線到伺服器。請再試一次。",
     "help": "需要協助？",
     "viewDocs": "查看文件",
-    "footer": "由 Yudhi Armyndharis 及 OpenWA 社群用 ❤️ 打造",
+    "footer": "由 illusionart AI Private Limited · illusionart 團隊構建",
+    "title": "WhatsApp Marketing",
+    "subtitle": "illusionart 出品的 WhatsApp API 閘道",
     "version": "v{{version}} · {{date}}"
   },
   "dashboard": {
@@ -502,7 +506,7 @@
       "postgres": "PostgreSQL",
       "postgresDesc": "適用於生產環境的資料庫",
       "useBuiltIn": "使用內置 PostgreSQL 容器",
-      "builtInDesc": "OpenWA 會為你管理 PostgreSQL 容器",
+      "builtInDesc": "WhatsApp Marketing 會為你管理 PostgreSQL 容器",
       "dbName": "資料庫名稱",
       "poolSize": "連線池大小",
       "ssl": "SSL 連線",
@@ -518,7 +522,7 @@
       "enable": "啟用 Redis",
       "enableDesc": "快取、工作階段儲存及 BullMQ 佇列需要 Redis",
       "useBuiltIn": "使用內置 Redis 容器",
-      "builtInDesc": "OpenWA 會為你管理 Redis 容器",
+      "builtInDesc": "WhatsApp Marketing 會為你管理 Redis 容器",
       "queueTitle": "啟用 BullMQ 佇列系統",
       "queueDesc": "使用訊息佇列可靠地傳遞訊息和 Webhook",
       "statsTitle": "佇列統計",
@@ -540,7 +544,7 @@
       "s3": "Amazon S3",
       "s3Desc": "雲端儲存空間（兼容 S3）",
       "useBuiltIn": "使用內置 MinIO 容器",
-      "builtInDesc": "OpenWA 會為你管理 MinIO（兼容 S3）容器",
+      "builtInDesc": "WhatsApp Marketing 會為你管理 MinIO（兼容 S3）容器",
       "storagePath": "儲存路徑",
       "bucket": "儲存桶名稱",
       "region": "區域",
@@ -592,7 +596,7 @@
     "configure": "設定",
     "empty": {
       "title": "找不到外掛",
-      "description": "安裝外掛以擴展 OpenWA 功能"
+      "description": "安裝外掛以擴展 WhatsApp Marketing 功能"
     },
     "config": {
       "title": "設定 {{name}}",

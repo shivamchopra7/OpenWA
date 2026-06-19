@@ -1,7 +1,9 @@
 {
   "common": {
-    "appName": "OpenWA",
-    "appSubtitle": "WhatsApp API",
+    "appName": "WhatsApp Marketing",
+    "appSubtitle": "di illusionart",
+    "disclaimer": "Questa non è un'applicazione ufficiale di Meta o WhatsApp. È una versione migliorata della piattaforma OpenWA.",
+    "credits": "Realizzato da illusionart AI Private Limited · team illusionart",
     "loading": "Caricamento...",
     "save": "Salva",
     "cancel": "Annulla",
@@ -124,7 +126,9 @@
     "connectionError": "Impossibile connettersi al server. Riprova.",
     "help": "Serve aiuto?",
     "viewDocs": "Visualizza la documentazione",
-    "footer": "Fatto con ❤️ da Yudhi Armyndharis e dalla Community di OpenWA",
+    "footer": "Realizzato da illusionart AI Private Limited · team illusionart",
+    "title": "WhatsApp Marketing",
+    "subtitle": "Gateway WhatsApp API di illusionart",
     "version": "v{{version}} · {{date}}"
   },
   "dashboard": {
@@ -502,7 +506,7 @@
       "postgres": "PostgreSQL",
       "postgresDesc": "Database pronto per la produzione",
       "useBuiltIn": "Usa Container PostgreSQL Integrato",
-      "builtInDesc": "OpenWA gestirà un container PostgreSQL per te",
+      "builtInDesc": "WhatsApp Marketing gestirà un container PostgreSQL per te",
       "dbName": "Nome Database",
       "poolSize": "Dimensione del Pool",
       "ssl": "Connessione SSL",
@@ -518,7 +522,7 @@
       "enable": "Abilita Redis",
       "enableDesc": "Richiesto per la memorizzazione della cache, dello storage di sessione e delle code BullMQ",
       "useBuiltIn": "Usa Container Redis Integrato",
-      "builtInDesc": "OpenWA gestirà un container Redis per te",
+      "builtInDesc": "WhatsApp Marketing gestirà un container Redis per te",
       "queueTitle": "Abilita Sistema di Code BullMQ",
       "queueDesc": "Usa le code di messaggi per una consegna affidabile di messaggi e webhook",
       "statsTitle": "Statistiche delle Code",
@@ -540,7 +544,7 @@
       "s3": "Amazon S3",
       "s3Desc": "Archiviazione Cloud (compatibile con S3)",
       "useBuiltIn": "Usa Container MinIO Integrato",
-      "builtInDesc": "OpenWA gestirà un container MinIO (compatibile con S3) per te",
+      "builtInDesc": "WhatsApp Marketing gestirà un container MinIO (compatibile con S3) per te",
       "storagePath": "Percorso Archiviazione",
       "bucket": "Nome Bucket",
       "region": "Regione",
@@ -592,7 +596,7 @@
     "configure": "Configura",
     "empty": {
       "title": "Nessun Plugin Trovato",
-      "description": "Installa i plugin per estendere le funzionalità di OpenWA"
+      "description": "Installa i plugin per estendere le funzionalità di WhatsApp Marketing"
     },
     "config": {
       "title": "Configura {{name}}",

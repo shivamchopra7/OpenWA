@@ -243,11 +243,30 @@ export function Sessions() {
 
   if (loading) {
     return (
-      <div
-        className="sessions-page"
-        style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '400px' }}
-      >
-        <Loader2 className="animate-spin" size={32} />
+      <div className="sessions-page">
+        <PageHeader title={t('sessions.title')} subtitle={t('sessions.subtitle')} />
+        <div className="sessions-grid">
+          {Array.from({ length: 6 }).map((_, i) => (
+            <div key={i} className="session-card" aria-hidden="true">
+              <div className="card-header">
+                <span className="skeleton" style={{ height: 18, width: '50%' }} />
+                <span className="skeleton" style={{ height: 22, width: 72, borderRadius: 'var(--radius-pill)' }} />
+              </div>
+              <div className="session-info">
+                {Array.from({ length: 3 }).map((__, r) => (
+                  <div key={r} className="info-row">
+                    <span className="skeleton" style={{ height: 12, width: 70 }} />
+                    <span className="skeleton" style={{ height: 12, width: 90 }} />
+                  </div>
+                ))}
+              </div>
+              <div className="card-actions">
+                <span className="skeleton" style={{ height: 32, width: 76, borderRadius: 'var(--radius)' }} />
+                <span className="skeleton" style={{ height: 32, width: 76, borderRadius: 'var(--radius)' }} />
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     );
   }
@@ -292,10 +311,11 @@ export function Sessions() {
       {error && (
         <div
           style={{
-            background: '#FEE2E2',
+            background: 'color-mix(in srgb, var(--error) 12%, transparent)',
+            border: '1px solid color-mix(in srgb, var(--error) 30%, transparent)',
             padding: '1rem',
-            borderRadius: '8px',
-            color: '#DC2626',
+            borderRadius: 'var(--radius)',
+            color: 'var(--error)',
             marginBottom: '1rem',
           }}
         >
@@ -371,7 +391,7 @@ export function Sessions() {
                 <span className="session-name">{qrData.sessionName}</span>
               </div>
               <button className="btn-close" onClick={() => setQrData(null)} aria-label={t('common.close')}>
-                <X size={20} color="#64748b" />
+                <X size={20} color="var(--text-secondary)" />
               </button>
             </div>
             <div className="modal-body" style={{ textAlign: 'center' }}>

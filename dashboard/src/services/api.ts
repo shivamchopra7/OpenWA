@@ -38,6 +38,36 @@ export interface SessionStats {
   memoryUsage: { heapUsed: number; heapTotal: number; rss: number };
 }
 
+// ── Statistics (GET /stats/*) — mirrors the backend StatsService shapes ──
+export interface OverviewStats {
+  sessions: {
+    active: number;
+    total: number;
+    byStatus: Record<string, number>;
+  };
+  messages: {
+    sent: number;
+    received: number;
+    failed: number;
+    today: { sent: number; received: number };
+  };
+}
+
+export interface MessageTimeSeriesPoint {
+  timestamp: string;
+  sent: number;
+  received: number;
+}
+
+export interface MessageStats {
+  timeSeries: MessageTimeSeriesPoint[];
+  byType: Record<string, number>;
+  bySession: Array<{ sessionId: string; name: string; sent: number; received: number }>;
+  topChats: Array<{ chatId: string; messageCount: number }>;
+}
+
+export type StatsPeriod = '24h' | '7d' | '30d';
+
 export interface Webhook {
   id: string;
   sessionId: string;
@@ -332,6 +362,17 @@ export const sessionApi = {
     request<{ messages: ChatMessage[]; total: number }>(
       `/sessions/${id}/messages?chatId=${encodeURIComponent(chatId)}&limit=${limit}`,
     ),
+};
+
+// =============================================================================
+// Statistics API
+// =============================================================================
+
+export const statsApi = {
+  getOverview: () => request<OverviewStats>('/stats/overview'),
+  getMessages: (period: StatsPeriod = '24h') =>
+    request<MessageStats>(`/stats/messages?period=${period}`),
+  getForSession: (sessionId: string) => request<unknown>(`/stats/sessions/${sessionId}`),
 };
 
 // =============================================================================

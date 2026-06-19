@@ -1,7 +1,9 @@
 {
   "common": {
-    "appName": "OpenWA",
-    "appSubtitle": "واجهة برمجة واتساب",
+    "appName": "WhatsApp Marketing",
+    "appSubtitle": "بواسطة illusionart",
+    "disclaimer": "هذا ليس تطبيقًا رسميًا من Meta أو WhatsApp. إنه نسخة محسّنة من منصة OpenWA.",
+    "credits": "بُني بواسطة illusionart AI Private Limited · فريق illusionart",
     "loading": "جارٍ التحميل...",
     "save": "حفظ",
     "cancel": "إلغاء",
@@ -124,7 +126,9 @@
     "connectionError": "تعذّر الاتصال بالخادم. يرجى المحاولة مرة أخرى.",
     "help": "هل تحتاج مساعدة؟",
     "viewDocs": "عرض التوثيق",
-    "footer": "صُنع بـ ❤️ بواسطة Yudhi Armyndharis ومجتمع OpenWA",
+    "title": "WhatsApp Marketing",
+    "subtitle": "بوابة WhatsApp API من illusionart",
+    "footer": "بُني بواسطة illusionart AI Private Limited · فريق illusionart",
     "version": "v{{version}} · {{date}}"
   },
   "dashboard": {
@@ -502,7 +506,7 @@
       "postgres": "PostgreSQL",
       "postgresDesc": "قاعدة بيانات جاهزة للإنتاج",
       "useBuiltIn": "استخدام حاوية PostgreSQL المدمجة",
-      "builtInDesc": "سيدير OpenWA حاوية PostgreSQL نيابةً عنك",
+      "builtInDesc": "سيدير WhatsApp Marketing حاوية PostgreSQL نيابةً عنك",
       "dbName": "اسم قاعدة البيانات",
       "poolSize": "حجم المجموعة",
       "ssl": "اتصال SSL",
@@ -518,7 +522,7 @@
       "enable": "تفعيل Redis",
       "enableDesc": "مطلوب للتخزين المؤقت وتخزين الجلسات وقوائم BullMQ",
       "useBuiltIn": "استخدام حاوية Redis المدمجة",
-      "builtInDesc": "سيدير OpenWA حاوية Redis نيابةً عنك",
+      "builtInDesc": "سيدير WhatsApp Marketing حاوية Redis نيابةً عنك",
       "queueTitle": "تفعيل نظام قوائم BullMQ",
       "queueDesc": "استخدام قوائم الرسائل لتوصيل موثوق للرسائل والويب هوك",
       "statsTitle": "إحصائيات القوائم",
@@ -540,7 +544,7 @@
       "s3": "Amazon S3",
       "s3Desc": "تخزين سحابي (متوافق مع S3)",
       "useBuiltIn": "استخدام حاوية MinIO المدمجة",
-      "builtInDesc": "سيدير OpenWA حاوية MinIO (متوافقة مع S3) نيابةً عنك",
+      "builtInDesc": "سيدير WhatsApp Marketing حاوية MinIO (متوافقة مع S3) نيابةً عنك",
       "storagePath": "مسار التخزين",
       "bucket": "اسم الحاوية",
       "region": "المنطقة",
@@ -592,7 +596,7 @@
     "configure": "إعداد",
     "empty": {
       "title": "لم يتم العثور على إضافات",
-      "description": "ثبّت إضافات لتوسيع وظائف OpenWA"
+      "description": "ثبّت إضافات لتوسيع وظائف WhatsApp Marketing"
     },
     "config": {
       "title": "إعداد {{name}}",
