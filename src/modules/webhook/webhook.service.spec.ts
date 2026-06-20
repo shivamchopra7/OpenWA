@@ -502,12 +502,18 @@ describe('WebhookService', () => {
   // ── test ───────────────────────────────────────────────────────────
 
   describe('test', () => {
+    let mockFetch: jest.Mock;
+
+    beforeEach(() => {
+      mockFetch = undiciFetch as jest.Mock;
+      mockFetch.mockReset();
+    });
+
     it('should POST a test payload to the webhook URL and return success on 2xx', async () => {
       const webhook = createMockWebhook({ secret: 'test-secret' });
       (repository.findOne as jest.Mock).mockResolvedValue(webhook);
 
-      const mockFetch = jest.fn().mockResolvedValue({ ok: true, status: 200, statusText: 'OK' });
-      global.fetch = mockFetch as typeof global.fetch;
+      mockFetch.mockResolvedValue({ ok: true, status: 200, statusText: 'OK' });
 
       const result = await service.test('sess-1', webhook.id);
 
@@ -530,7 +536,7 @@ describe('WebhookService', () => {
       const webhook = createMockWebhook();
       (repository.findOne as jest.Mock).mockResolvedValue(webhook);
 
-      global.fetch = jest.fn().mockResolvedValue({ ok: false, status: 404, statusText: 'Not Found' }) as typeof global.fetch;
+      mockFetch.mockResolvedValue({ ok: false, status: 404, statusText: 'Not Found' });
 
       const result = await service.test('sess-1', webhook.id);
 
@@ -544,7 +550,7 @@ describe('WebhookService', () => {
       const webhook = createMockWebhook();
       (repository.findOne as jest.Mock).mockResolvedValue(webhook);
 
-      global.fetch = jest.fn().mockRejectedValue(new Error('fetch failed')) as typeof global.fetch;
+      mockFetch.mockRejectedValue(new Error('fetch failed'));
 
       const result = await service.test('sess-1', webhook.id);
 
