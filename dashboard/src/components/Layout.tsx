@@ -136,12 +136,12 @@ export function Layout({ onLogout, userRole }: LayoutProps) {
       >
         <div className="sidebar-header">
           <img src="/whatsapp-marketing-logo.png" alt={t('common.appName')} className="sidebar-logo" />
-          {!isCollapsed && (
+          {/* {!isCollapsed && (
             <div className="sidebar-brand">
               <span className="brand-name">{t('common.appName')}</span>
               <span className="brand-subtitle">{t('common.appSubtitle')}</span>
             </div>
-          )}
+          )} */}
         </div>
 
         {!isMobile && (
@@ -176,12 +176,12 @@ export function Layout({ onLogout, userRole }: LayoutProps) {
           })}
         </nav>
 
-        {!isCollapsed && (
+        {/* {!isCollapsed && (
           <div className="sidebar-brand-footer">
             <p className="brand-disclaimer">{t('common.disclaimer')}</p>
             <p className="brand-credits">{t('common.credits')}</p>
           </div>
-        )}
+        )} */}
 
         <div className="sidebar-footer">
           <div className="language-menu" ref={languageMenuRef}>
