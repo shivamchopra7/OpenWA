@@ -1,7 +1,9 @@
 {
   "common": {
-    "appName": "OpenWA",
-    "appSubtitle": "WhatsApp API",
+    "appName": "WhatsApp Marketing",
+    "appSubtitle": "illusionart ద్వారా",
+    "disclaimer": "ఇది Meta లేదా WhatsApp యొక్క అధికారిక అప్లికేషన్ కాదు. ఇది OpenWA ప్లాట్‌ఫారమ్ యొక్క మెరుగైన వెర్షన్.",
+    "credits": "illusionart AI Private Limited · illusionart బృందం ద్వారా నిర్మించబడింది",
     "loading": "లోడ్ అవుతోంది...",
     "save": "సేవ్ చేయి",
     "cancel": "రద్దు చేయి",
@@ -124,7 +126,9 @@
     "connectionError": "సర్వర్‌కు కనెక్ట్ కాలేకపోయాము. దయచేసి మళ్లీ ప్రయత్నించండి.",
     "help": "సహాయం కావాలా?",
     "viewDocs": "డాక్యుమెంటేషన్ చూడండి",
-    "footer": "Yudhi Armyndharis మరియు OpenWA కమ్యూనిటీ ద్వారా ❤️ తో తయారు చేయబడింది",
+    "footer": "illusionart AI Private Limited · illusionart బృందం ద్వారా నిర్మించబడింది",
+    "title": "WhatsApp Marketing",
+    "subtitle": "illusionart WhatsApp API గేట్‌వే",
     "version": "v{{version}} · {{date}}"
   },
   "dashboard": {
@@ -502,7 +506,7 @@
       "postgres": "PostgreSQL",
       "postgresDesc": "ప్రొడక్షన్-రెడీ డేటాబేస్",
       "useBuiltIn": "ఇన్-బిల్ట్ PostgreSQL కంటైనర్‌ను ఉపయోగించండి",
-      "builtInDesc": "OpenWA మీ కోసం ఒక PostgreSQL కంటైనర్‌ను నిర్వహిస్తుంది",
+      "builtInDesc": "WhatsApp Marketing మీ కోసం ఒక PostgreSQL కంటైనర్‌ను నిర్వహిస్తుంది",
       "dbName": "డేటాబేస్ పేరు",
       "poolSize": "పూల్ సైజు",
       "ssl": "SSL కనెక్షన్",
@@ -518,7 +522,7 @@
       "enable": "Redis ప్రారంభించండి",
       "enableDesc": "క్యాషింగ్, సెషన్ స్టోరేజ్ మరియు BullMQ క్యూల కోసం అవసరం",
       "useBuiltIn": "ఇన్-బిల్ట్ Redis కంటైనర్‌ను ఉపయోగించండి",
-      "builtInDesc": "OpenWA మీ కోసం ఒక Redis కంటైనర్‌ను నిర్వహిస్తుంది",
+      "builtInDesc": "WhatsApp Marketing మీ కోసం ఒక Redis కంటైనర్‌ను నిర్వహిస్తుంది",
       "queueTitle": "BullMQ క్యూ సిస్టమ్‌ను ప్రారంభించండి",
       "queueDesc": "నమ్మకమైన సందేశం మరియు వెబ్‌హుక్ డెలివరీ కోసం సందేశ క్యూలను ఉపయోగించండి",
       "statsTitle": "క్యూ గణాంకాలు",
@@ -540,7 +544,7 @@
       "s3": "Amazon S3",
       "s3Desc": "క్లౌడ్ స్టోరేజ్ (S3 అనుకూలమైనది)",
       "useBuiltIn": "ఇన్-బిల్ట్ MinIO కంటైనర్‌ను ఉపయోగించండి",
-      "builtInDesc": "OpenWA మీ కోసం ఒక MinIO (S3-అనుకూల) కంటైనర్‌ను నిర్వహిస్తుంది",
+      "builtInDesc": "WhatsApp Marketing మీ కోసం ఒక MinIO (S3-అనుకూల) కంటైనర్‌ను నిర్వహిస్తుంది",
       "storagePath": "స్టోరేజ్ పాత్",
       "bucket": "బకెట్ పేరు",
       "region": "ప్రాంతం (Region)",
@@ -592,7 +596,7 @@
     "configure": "కాన్ఫిగర్ చేయి",
     "empty": {
       "title": "ఎలాంటి ప్లగిన్స్ కనుగొనబడలేదు",
-      "description": "OpenWA కార్యాచరణను విస్తరించడానికి ప్లగిన్లను ఇన్‌స్టాల్ చేయండి"
+      "description": "WhatsApp Marketing కార్యాచరణను విస్తరించడానికి ప్లగిన్లను ఇన్‌స్టాల్ చేయండి"
     },
     "config": {
       "title": "{{name}} కాన్ఫిగర్ చేయి",

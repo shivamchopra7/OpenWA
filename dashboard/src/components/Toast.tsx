@@ -25,6 +25,10 @@ interface ToastContextValue {
 
 const ToastContext = createContext<ToastContextValue | null>(null);
 
+// Cap how many toasts are visible at once so a burst of events can't cascade
+// off-screen; oldest is dropped when the stack is full.
+const MAX_VISIBLE_TOASTS = 3;
+
 export function useToast() {
   const context = useContext(ToastContext);
   if (!context) {
@@ -51,9 +55,19 @@ export function ToastProvider({ children }: ToastProviderProps) {
       // function" on every toast — fall back to a non-crypto id (a toast key needs no strength).
       const id = crypto.randomUUID?.() ?? `t-${Date.now()}-${Math.random().toString(36).slice(2)}`;
       const newToast = { ...toast, id };
-      setToasts(prev => [...prev, newToast]);
+      setToasts(prev => {
+        // Dedupe: skip if an identical (type + title + message) toast is already showing.
+        const isDuplicate = prev.some(
+          t => t.type === newToast.type && t.title === newToast.title && t.message === newToast.message,
+        );
+        if (isDuplicate) return prev;
+        // Cap the visible stack, dropping the oldest toast(s) when full.
+        const next = [...prev, newToast];
+        return next.length > MAX_VISIBLE_TOASTS ? next.slice(next.length - MAX_VISIBLE_TOASTS) : next;
+      });
 
-      // Auto-remove after duration
+      // Auto-remove after duration. Harmless no-op if the toast was deduped or
+      // already evicted by the cap before the timer fires.
       const duration = toast.duration ?? 4000;
       if (duration > 0) {
         setTimeout(() => removeToast(id), duration);

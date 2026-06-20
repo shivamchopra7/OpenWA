@@ -1,7 +1,9 @@
 {
   "common": {
-    "appName": "OpenWA",
-    "appSubtitle": "ממשק WhatsApp API",
+    "appName": "WhatsApp Marketing",
+    "appSubtitle": "מאת illusionart",
+    "disclaimer": "זהו לא יישום רשמי של Meta או WhatsApp. זוהי גרסה משופרת של פלטפורמת OpenWA.",
+    "credits": "נבנה על ידי illusionart AI Private Limited · צוות illusionart",
     "loading": "טוען...",
     "save": "שמירה",
     "cancel": "ביטול",
@@ -124,7 +126,9 @@
     "connectionError": "לא ניתן להתחבר לשרת. יש לנסות שוב.",
     "help": "צריך עזרה?",
     "viewDocs": "לצפייה בתיעוד",
-    "footer": "נבנה באהבה על ידי Yudhi Armyndharis וקהילת OpenWA",
+    "footer": "נבנה על ידי illusionart AI Private Limited · צוות illusionart",
+    "title": "WhatsApp Marketing",
+    "subtitle": "שער WhatsApp API מאת illusionart",
     "version": "v{{version}} · {{date}}"
   },
   "dashboard": {
@@ -502,7 +506,7 @@
       "postgres": "PostgreSQL",
       "postgresDesc": "מסד נתונים מוכן לייצור",
       "useBuiltIn": "שימוש בקונטיינר PostgreSQL מובנה",
-      "builtInDesc": "OpenWA ינהל עבורך קונטיינר PostgreSQL",
+      "builtInDesc": "WhatsApp Marketing ינהל עבורך קונטיינר PostgreSQL",
       "dbName": "שם מסד הנתונים",
       "poolSize": "גודל Pool",
       "ssl": "חיבור SSL",
@@ -518,7 +522,7 @@
       "enable": "הפעלת Redis",
       "enableDesc": "נדרש למטמון, אחסון Sessions ותורי BullMQ",
       "useBuiltIn": "שימוש בקונטיינר Redis מובנה",
-      "builtInDesc": "OpenWA ינהל עבורך קונטיינר Redis",
+      "builtInDesc": "WhatsApp Marketing ינהל עבורך קונטיינר Redis",
       "queueTitle": "הפעלת מערכת התורים BullMQ",
       "queueDesc": "שימוש בתורי הודעות לאספקה אמינה של הודעות ו-Webhooks",
       "statsTitle": "סטטיסטיקות תור",
@@ -540,7 +544,7 @@
       "s3": "Amazon S3",
       "s3Desc": "אחסון ענן (תואם S3)",
       "useBuiltIn": "שימוש בקונטיינר MinIO מובנה",
-      "builtInDesc": "OpenWA ינהל עבורך קונטיינר MinIO (תואם S3)",
+      "builtInDesc": "WhatsApp Marketing ינהל עבורך קונטיינר MinIO (תואם S3)",
       "storagePath": "נתיב אחסון",
       "bucket": "שם Bucket",
       "region": "אזור (Region)",
@@ -592,7 +596,7 @@
     "configure": "הגדרה",
     "empty": {
       "title": "לא נמצאו תוספים",
-      "description": "ניתן להתקין תוספים כדי להרחיב את היכולות של OpenWA"
+      "description": "ניתן להתקין תוספים כדי להרחיב את היכולות של WhatsApp Marketing"
     },
     "config": {
       "title": "הגדרת {{name}}",

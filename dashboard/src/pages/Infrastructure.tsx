@@ -427,7 +427,7 @@ export function Infrastructure() {
           </div>
 
           <div className="config-form">
-            <h3 style={{ margin: '0 0 1rem', fontSize: '0.9375rem', color: '#475569', fontWeight: 600 }}>
+            <h3 style={{ margin: '0 0 1rem', fontSize: '0.9375rem', color: 'var(--text-secondary)', fontWeight: 600 }}>
               <Webhook size={16} style={{ marginInlineEnd: '0.5rem', verticalAlign: 'middle' }} />
               {t('infrastructure.webhook.settings')}
             </h3>
@@ -461,7 +461,7 @@ export function Infrastructure() {
             </div>
 
             <div style={{ borderTop: '1px solid var(--border)', margin: '1.5rem 0', paddingTop: '1.5rem' }}>
-              <h3 style={{ margin: '0 0 1rem', fontSize: '0.9375rem', color: '#475569', fontWeight: 600 }}>
+              <h3 style={{ margin: '0 0 1rem', fontSize: '0.9375rem', color: 'var(--text-secondary)', fontWeight: 600 }}>
                 <Gauge size={16} style={{ marginInlineEnd: '0.5rem', verticalAlign: 'middle' }} />
                 {t('infrastructure.webhook.rateLimit')}
               </h3>
@@ -631,20 +631,20 @@ export function Infrastructure() {
             style={{
               padding: '2.5rem',
               textAlign: 'center',
-              background: '#F8FAFC',
+              background: 'var(--bg-hover)',
               borderRadius: '12px',
-              border: '1px dashed #E2E8F0',
+              border: '1px dashed var(--border)',
               marginTop: '1rem',
             }}
           >
-            <Database size={32} style={{ color: '#22C55E', marginBottom: '1rem', opacity: 0.7 }} />
-            <p style={{ margin: 0, color: '#475569', fontSize: '0.9375rem', fontWeight: 500 }}>
+            <Database size={32} style={{ color: 'var(--primary)', marginBottom: '1rem', opacity: 0.7 }} />
+            <p style={{ margin: 0, color: 'var(--text-secondary)', fontSize: '0.9375rem', fontWeight: 500 }}>
               {t('infrastructure.database.migrationsTitle')}
             </p>
             <p
               style={{
                 margin: '0.75rem 0 0',
-                color: '#22C55E',
+                color: 'var(--primary)',
                 fontSize: '0.875rem',
                 fontWeight: 500,
                 display: 'flex',
@@ -656,7 +656,7 @@ export function Infrastructure() {
               <CheckCircle size={16} />
               {t('infrastructure.database.migrationsStatus')}
             </p>
-            <p style={{ margin: '0.5rem 0 0', color: '#64748B', fontSize: '0.8125rem', lineHeight: 1.5 }}>
+            <p style={{ margin: '0.5rem 0 0', color: 'var(--text-secondary)', fontSize: '0.8125rem', lineHeight: 1.5 }}>
               {t('infrastructure.database.migrationsHint')}
             </p>
           </div>
@@ -829,17 +829,17 @@ export function Infrastructure() {
               style={{
                 padding: '2.5rem',
                 textAlign: 'center',
-                background: '#F8FAFC',
+                background: 'var(--bg-hover)',
                 borderRadius: '12px',
-                border: '1px dashed #E2E8F0',
+                border: '1px dashed var(--border)',
                 marginTop: '1rem',
               }}
             >
-              <Server size={32} style={{ color: '#94A3B8', marginBottom: '1rem', opacity: 0.5 }} />
-              <p style={{ margin: 0, color: '#475569', fontSize: '0.9375rem', fontWeight: 500 }}>
+              <Server size={32} style={{ color: 'var(--text-muted)', marginBottom: '1rem', opacity: 0.5 }} />
+              <p style={{ margin: 0, color: 'var(--text-secondary)', fontSize: '0.9375rem', fontWeight: 500 }}>
                 {t('infrastructure.redis.disabledTitle')}
               </p>
-              <p style={{ margin: '0.5rem 0 0', color: '#64748B', fontSize: '0.8125rem', lineHeight: 1.5 }}>
+              <p style={{ margin: '0.5rem 0 0', color: 'var(--text-secondary)', fontSize: '0.8125rem', lineHeight: 1.5 }}>
                 {t('infrastructure.redis.disabledDesc')}
               </p>
             </div>
@@ -979,7 +979,7 @@ export function Infrastructure() {
             <div className="modal-body" style={{ padding: '2rem' }}>
               {restartStatus === 'idle' && (
                 <>
-                  <p style={{ fontSize: '1rem', color: '#475569', marginBottom: '1.5rem' }}>
+                  <p style={{ fontSize: '1rem', color: 'var(--text-secondary)', marginBottom: '1.5rem' }}>
                     <Trans i18nKey="infrastructure.restart.idleDesc" components={{ code: <code />, br: <br /> }} />
                   </p>
                   <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }}>
@@ -996,8 +996,8 @@ export function Infrastructure() {
               {(restartStatus === 'restarting' || restartStatus === 'waiting') && (
                 <>
                   <div style={{ marginBottom: '1.5rem' }}>
-                    <Loader2 className="animate-spin" size={48} style={{ color: '#22C55E', marginBottom: '1rem' }} />
-                    <p style={{ fontSize: '1.125rem', color: '#1E293B', fontWeight: 500 }}>
+                    <Loader2 className="animate-spin" size={48} style={{ color: 'var(--primary)', marginBottom: '1rem' }} />
+                    <p style={{ fontSize: '1.125rem', color: 'var(--text-primary)', fontWeight: 500 }}>
                       {restartCountdown > 0
                         ? t('infrastructure.restart.restartingMsg', { count: restartCountdown })
                         : t('infrastructure.restart.checking')}
@@ -1007,7 +1007,7 @@ export function Infrastructure() {
                     style={{
                       width: '100%',
                       height: '8px',
-                      background: '#E2E8F0',
+                      background: 'var(--bg-hover)',
                       borderRadius: '4px',
                       overflow: 'hidden',
                     }}
@@ -1016,12 +1016,12 @@ export function Infrastructure() {
                       style={{
                         width: restartCountdown > 0 ? `${((30 - restartCountdown) / 30) * 100}%` : '100%',
                         height: '100%',
-                        background: 'linear-gradient(90deg, #22C55E, #10B981)',
+                        background: 'linear-gradient(135deg, #00a884, #008069)',
                         transition: 'width 1s linear',
                       }}
                     />
                   </div>
-                  <p style={{ marginTop: '1rem', fontSize: '0.875rem', color: '#64748B' }}>
+                  <p style={{ marginTop: '1rem', fontSize: '0.875rem', color: 'var(--text-secondary)' }}>
                     {t('infrastructure.restart.dontClose')}
                   </p>
                 </>
@@ -1029,8 +1029,8 @@ export function Infrastructure() {
 
               {restartStatus === 'success' && (
                 <>
-                  <CheckCircle size={48} style={{ color: '#22C55E', marginBottom: '1rem' }} />
-                  <p style={{ fontSize: '1rem', color: '#475569' }}>
+                  <CheckCircle size={48} style={{ color: 'var(--primary)', marginBottom: '1rem' }} />
+                  <p style={{ fontSize: '1rem', color: 'var(--text-secondary)' }}>
                     {t('infrastructure.restart.successMsg')}
                   </p>
                 </>
@@ -1038,7 +1038,7 @@ export function Infrastructure() {
 
               {restartStatus === 'error' && (
                 <>
-                  <p style={{ fontSize: '1rem', color: '#DC2626', marginBottom: '1rem' }}>
+                  <p style={{ fontSize: '1rem', color: 'var(--error)', marginBottom: '1rem' }}>
                     {t('infrastructure.restart.errorMsg')}
                   </p>
                   <button className="btn-primary" onClick={() => window.location.reload()}>

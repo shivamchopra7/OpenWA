@@ -27,6 +27,8 @@
 
 ---
 
+> **WhatsApp Marketing** by **illusionart** — This product is presented as WhatsApp Marketing by illusionart AI Private Limited. It is not an official Meta or WhatsApp application; it is an enhanced distribution of the OpenWA platform.
+
 ## ✨ Why OpenWA?
 
 **OpenWA** is a free, open-source WhatsApp API Gateway designed for developers who need full control over their messaging infrastructure—without vendor lock-in or hidden paywalls.

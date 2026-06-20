@@ -23,7 +23,7 @@
   gap: 0.5rem;
   padding: 0.75rem 1.25rem;
   background: var(--primary);
-  color: white;
+  color: var(--on-primary);
   border: none;
   border-radius: var(--radius);
   font-size: 0.9375rem;
@@ -54,16 +54,16 @@
 }
 
 .webhook-card {
-  background: var(--bg-white);
-  border-radius: 12px;
-  box-shadow: var(--shadow-sm);
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
   border: 1px solid var(--border);
   overflow: hidden;
   transition: box-shadow 0.2s;
 }
 
 .webhook-card:hover {
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-lg);
 }
 
 .webhook-card-header {
@@ -72,7 +72,7 @@
   justify-content: space-between;
   padding: 1rem 1.25rem;
   border-bottom: 1px solid var(--border);
-  background: var(--bg-light);
+  background: var(--bg-hover);
   gap: 1rem;
 }
 
@@ -182,12 +182,12 @@
 .event-tag {
   font-size: 0.75rem;
   padding: 0.25rem 0.625rem;
-  background: rgba(37, 211, 102, 0.15);
+  background: var(--primary-soft);
   color: var(--primary);
   border-radius: 6px;
   font-weight: 600;
   white-space: nowrap;
-  border: 1px solid rgba(37, 211, 102, 0.25);
+  border: 1px solid var(--primary-soft);
   cursor: default;
   font-family: 'JetBrains Mono', monospace;
   letter-spacing: -0.01em;
@@ -197,7 +197,7 @@
 .webhooks-page .modal-body .event-tag {
   font-size: 0.8125rem;
   padding: 0.5rem 0.75rem;
-  background: var(--bg-light);
+  background: var(--bg-hover);
   color: var(--text-secondary);
   border: 1px solid var(--border);
   border-radius: 6px;
@@ -212,7 +212,7 @@
 
 .webhooks-page .modal-body .event-tag.selected {
   background: var(--primary);
-  color: white;
+  color: var(--on-primary);
   border-color: var(--primary);
 }
 
@@ -238,12 +238,12 @@
 }
 
 .status-badge.active {
-  background: rgba(37, 211, 102, 0.15);
+  background: var(--primary-soft);
   color: var(--primary);
 }
 
 .status-badge.inactive {
-  background: var(--bg-light);
+  background: var(--bg-hover);
   color: var(--text-muted);
 }
 
@@ -259,21 +259,21 @@
 }
 
 .icon-btn:hover {
-  background: var(--bg-light);
+  background: var(--bg-hover);
   color: var(--text-primary);
 }
 
 .icon-btn.danger:hover {
-  background: #fee2e2;
-  border-color: #fecaca;
-  color: #dc2626;
+  background: color-mix(in srgb, var(--error) 18%, transparent);
+  border-color: color-mix(in srgb, var(--error) 30%, transparent);
+  color: var(--error);
 }
 
 .events-reference {
-  background: var(--bg-white);
-  border-radius: 12px;
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
   padding: 1.5rem;
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-md);
   border: 1px solid var(--border);
   height: fit-content;
 }
@@ -302,7 +302,7 @@
 .event-item code {
   font-size: 0.8125rem;
   color: var(--primary);
-  background: rgba(37, 211, 102, 0.1);
+  background: var(--primary-soft);
   padding: 0.25rem 0.5rem;
   border-radius: 4px;
   width: fit-content;
@@ -316,51 +316,51 @@
 
 /* Dark mode - explicit theme */
 [data-theme='dark'] .event-tag {
-  color: #4ade80;
-  background: rgba(37, 211, 102, 0.2);
-  border-color: rgba(37, 211, 102, 0.35);
+  color: var(--primary);
+  background: var(--primary-soft);
+  border-color: var(--primary-soft);
 }
 
 [data-theme='dark'] .status-badge.active {
-  color: #4ade80;
-  background: rgba(37, 211, 102, 0.2);
+  color: var(--primary);
+  background: var(--primary-soft);
 }
 
 [data-theme='dark'] .webhook-url {
-  color: #e2e8f0;
+  color: var(--text-primary);
 }
 
 [data-theme='dark'] .webhook-meta-label {
-  color: #94a3b8;
+  color: var(--text-secondary);
 }
 
 [data-theme='dark'] .webhook-meta-value {
-  color: #e2e8f0;
+  color: var(--text-primary);
 }
 
 /* Dark mode - system preference */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme='light']) .event-tag {
-    color: #4ade80;
-    background: rgba(37, 211, 102, 0.2);
-    border-color: rgba(37, 211, 102, 0.35);
+    color: var(--primary);
+    background: var(--primary-soft);
+    border-color: var(--primary-soft);
   }
 
   :root:not([data-theme='light']) .status-badge.active {
-    color: #4ade80;
-    background: rgba(37, 211, 102, 0.2);
+    color: var(--primary);
+    background: var(--primary-soft);
   }
 
   :root:not([data-theme='light']) .webhook-url {
-    color: #e2e8f0;
+    color: var(--text-primary);
   }
 
   :root:not([data-theme='light']) .webhook-meta-label {
-    color: #94a3b8;
+    color: var(--text-secondary);
   }
 
   :root:not([data-theme='light']) .webhook-meta-value {
-    color: #e2e8f0;
+    color: var(--text-primary);
   }
 }
 
@@ -434,6 +434,12 @@
   }
 }
 
+@media (max-width: 480px) {
+  .webhooks-page {
+    padding: 0.75rem;
+  }
+}
+
 /* Toast Notification */
 .toast {
   position: fixed;
@@ -463,15 +469,15 @@
 }
 
 .toast.success {
-  background: #ecfdf5;
-  border: 1px solid #a7f3d0;
-  color: #047857;
+  background: var(--primary-soft);
+  border: 1px solid color-mix(in srgb, var(--primary) 30%, transparent);
+  color: var(--primary);
 }
 
 .toast.error {
-  background: #fef2f2;
-  border: 1px solid #fecaca;
-  color: #dc2626;
+  background: color-mix(in srgb, var(--error) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--error) 30%, transparent);
+  color: var(--error);
 }
 
 .toast-close {
@@ -493,7 +499,7 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.75rem 1.25rem;
-  background: #dc2626;
+  background: var(--error);
   color: white;
   border: none;
   border-radius: var(--radius);
@@ -504,7 +510,7 @@
 }
 
 .btn-danger:hover {
-  background: #b91c1c;
+  background: color-mix(in srgb, var(--error) 85%, #000);
 }
 
 /* Small Modal Variant */
@@ -539,7 +545,7 @@
   gap: 1rem;
   margin-top: 1.5rem;
   padding: 1rem 1.25rem;
-  background: var(--bg-light);
+  background: var(--bg-hover);
   border-radius: var(--radius);
 }
 
@@ -568,7 +574,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #cbd5e1;
+  background-color: color-mix(in srgb, var(--text-muted) 45%, transparent);
   transition: 0.3s;
   border-radius: 26px;
 }

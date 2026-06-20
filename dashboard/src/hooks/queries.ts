@@ -1,6 +1,7 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import {
   sessionApi,
+  statsApi,
   webhookApi,
   templateApi,
   apiKeyApi,
@@ -9,6 +10,7 @@ import {
   pluginsApi,
   type Webhook,
   type TemplatePayload,
+  type StatsPeriod,
 } from '../services/api';
 
 // ── Query Keys ────────────────────────────────────────────────────────
@@ -16,6 +18,8 @@ import {
 export const queryKeys = {
   sessions: ['sessions'] as const,
   sessionStats: ['sessions', 'stats'] as const,
+  statsOverview: ['stats', 'overview'] as const,
+  messageStats: (period: StatsPeriod) => ['stats', 'messages', period] as const,
   sessionGroups: (sessionId: string) => ['sessions', sessionId, 'groups'] as const,
   webhooks: ['webhooks'] as const,
   templates: (sessionId: string) => ['sessions', sessionId, 'templates'] as const,
@@ -42,6 +46,24 @@ export function useSessionStatsQuery() {
   return useQuery({
     queryKey: queryKeys.sessionStats,
     queryFn: sessionApi.getStats,
+    staleTime: 30_000,
+  });
+}
+
+// ── Statistics Queries ────────────────────────────────────────────────
+
+export function useStatsOverviewQuery() {
+  return useQuery({
+    queryKey: queryKeys.statsOverview,
+    queryFn: statsApi.getOverview,
+    staleTime: 30_000,
+  });
+}
+
+export function useMessageStatsQuery(period: StatsPeriod) {
+  return useQuery({
+    queryKey: queryKeys.messageStats(period),
+    queryFn: () => statsApi.getMessages(period),
     staleTime: 30_000,
   });
 }
@@ -154,11 +176,12 @@ export function useDeleteTemplateMutation() {
 
 // ── API Key Queries ───────────────────────────────────────────────────
 
-export function useApiKeysQuery() {
+export function useApiKeysQuery(enabled = true) {
   return useQuery({
     queryKey: queryKeys.apiKeys,
     queryFn: apiKeyApi.list,
     staleTime: 30_000,
+    enabled,
   });
 }
 

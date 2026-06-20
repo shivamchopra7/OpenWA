@@ -178,7 +178,17 @@ export class WebhookService {
           // Use the configured WEBHOOK_TIMEOUT (single source of truth across queued/test/direct paths).
           signal: AbortSignal.timeout(this.configService.get<number>('webhook.timeout', 10000)),
         },
-        response => ({ success: response.ok, statusCode: response.status }),
+        response => {
+          if (!response.ok) {
+            const statusText = response.statusText || 'Unknown';
+            return {
+              success: false,
+              statusCode: response.status,
+              error: `Remote endpoint returned HTTP ${response.status} ${statusText}. Verify the webhook URL is correct and the server is listening for POST requests.`,
+            };
+          }
+          return { success: true, statusCode: response.status };
+        },
         { guard: isSsrfProtectionEnabled() },
       );
     } catch (error) {
