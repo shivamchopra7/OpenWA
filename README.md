@@ -60,7 +60,7 @@ Built on a **pluggable architecture**, OpenWA lets you swap database engines (SQ
 | API Key Auth  | ✅     | Secure API authentication            |
 | Swagger Docs  | ✅     | Interactive API documentation        |
 
-### Messaging
+## Messaging
 
 | Feature           | Status | Description                      |
 | ----------------- | ------ | -------------------------------- |
