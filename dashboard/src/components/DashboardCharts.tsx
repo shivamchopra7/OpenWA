@@ -15,6 +15,7 @@ import {
 import type { MessageTimeSeriesPoint, StatsPeriod } from '../services/api';
 
 // ── prefers-reduced-motion (live) ─────────────────────────────────────
+// eslint-disable-next-line react-refresh/only-export-components
 export function useReducedMotion(): boolean {
   const [reduced, setReduced] = useState(
     () =>

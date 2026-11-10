@@ -29,6 +29,7 @@ const ToastContext = createContext<ToastContextValue | null>(null);
 // off-screen; oldest is dropped when the stack is full.
 const MAX_VISIBLE_TOASTS = 3;
 
+// eslint-disable-next-line react-refresh/only-export-components
 export function useToast() {
   const context = useContext(ToastContext);
   if (!context) {

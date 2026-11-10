@@ -105,7 +105,7 @@ export function Sessions() {
         fetchSessions();
       }
     }
-  }, [sessions]);
+  }, [sessions, fetchSessions]);
 
   useEffect(() => {
     if (qrData) {
