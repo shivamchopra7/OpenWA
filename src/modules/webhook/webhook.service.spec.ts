@@ -525,9 +525,9 @@ describe('WebhookService', () => {
           headers: expect.objectContaining({
             'Content-Type': 'application/json',
             'X-OpenWA-Event': 'test',
-            'X-OpenWA-Signature': expect.stringMatching(/^sha256=[a-f0-9]{64}$/),
-          }),
-          body: expect.stringContaining('"event":"test"'),
+            'X-OpenWA-Signature': expect.stringMatching(/^sha256=[a-f0-9]{64}$/) as unknown,
+          }) as unknown,
+          body: expect.stringContaining('"event":"test"') as unknown,
         }),
       );
     });

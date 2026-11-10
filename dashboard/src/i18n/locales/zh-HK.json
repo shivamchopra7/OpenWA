@@ -291,7 +291,9 @@
       "updateFailed": "更新 Webhook 失敗：{{message}}",
       "testOk": "Webhook 測試成功！狀態：{{status}}",
       "testFailed": "Webhook 測試失敗：{{message}}",
-      "testError": "測試 Webhook 失敗：{{message}}"
+      "testError": "測試 Webhook 失敗：{{message}}",
+      "testFailedRemote": "Remote server returned HTTP {{status}}. Check the URL and that the endpoint is listening for POST requests.",
+      "testFailedN8nHint": "For n8n: activate the workflow and use the Production URL (/webhook/...), or click \"Listen for test event\" when using a Test URL (/webhook-test/...)."
     },
     "actions": {
       "test": "測試",

@@ -291,7 +291,9 @@
       "updateFailed": "فشل تحديث الويب هوك: {{message}}",
       "testOk": "نجح اختبار الويب هوك! الحالة: {{status}}",
       "testFailed": "فشل اختبار الويب هوك: {{message}}",
-      "testError": "فشل اختبار الويب هوك: {{message}}"
+      "testError": "فشل اختبار الويب هوك: {{message}}",
+      "testFailedRemote": "Remote server returned HTTP {{status}}. Check the URL and that the endpoint is listening for POST requests.",
+      "testFailedN8nHint": "For n8n: activate the workflow and use the Production URL (/webhook/...), or click \"Listen for test event\" when using a Test URL (/webhook-test/...)."
     },
     "actions": {
       "test": "اختبار",

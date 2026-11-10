@@ -291,7 +291,9 @@
       "updateFailed": "వెబ్‌హుక్ అప్‌డేట్ చేయడం విఫలమైంది: {{message}}",
       "testOk": "వెబ్‌హుక్ పరీక్ష విజయవంతమైంది! స్థితి: {{status}}",
       "testFailed": "వెబ్‌హుక్ పరీక్ష విఫలమైంది: {{message}}",
-      "testError": "వెబ్‌హుక్‌ను పరీక్షించడంలో లోపం: {{message}}"
+      "testError": "వెబ్‌హుక్‌ను పరీక్షించడంలో లోపం: {{message}}",
+      "testFailedRemote": "Remote server returned HTTP {{status}}. Check the URL and that the endpoint is listening for POST requests.",
+      "testFailedN8nHint": "For n8n: activate the workflow and use the Production URL (/webhook/...), or click \"Listen for test event\" when using a Test URL (/webhook-test/...)."
     },
     "actions": {
       "test": "పరీక్షించు (Test)",

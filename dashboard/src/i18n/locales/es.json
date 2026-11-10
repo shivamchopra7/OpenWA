@@ -47,7 +47,9 @@
     "errorGeneric": "Ha ocurrido un error",
     "unknownError": "Error desconocido",
     "showApiKey": "Mostrar clave API",
-    "hideApiKey": "Ocultar clave API"
+    "hideApiKey": "Ocultar clave API",
+    "disclaimer": "This is not an official Meta or WhatsApp application. It is an enhanced version of the OpenWA platform.",
+    "credits": "Built by illusionart AI Private Limited · illusionart team"
   },
   "theme": {
     "light": "Claro",
@@ -125,7 +127,9 @@
     "help": "¿Necesitas ayuda?",
     "viewDocs": "Ver documentación",
     "footer": "Hecho con ❤️ por Yudhi Armyndharis y la comunidad OpenWA",
-    "version": "v{{version}} · {{date}}"
+    "version": "v{{version}} · {{date}}",
+    "title": "WhatsApp Marketing",
+    "subtitle": "WhatsApp API gateway by illusionart"
   },
   "dashboard": {
     "title": "Panel",
@@ -287,7 +291,9 @@
       "updateFailed": "Error al actualizar el webhook: {{message}}",
       "testOk": "Prueba de webhook exitosa. Estado: {{status}}",
       "testFailed": "Prueba de webhook fallida: {{message}}",
-      "testError": "Error al probar el webhook: {{message}}"
+      "testError": "Error al probar el webhook: {{message}}",
+      "testFailedRemote": "Remote server returned HTTP {{status}}. Check the URL and that the endpoint is listening for POST requests.",
+      "testFailedN8nHint": "For n8n: activate the workflow and use the Production URL (/webhook/...), or click \"Listen for test event\" when using a Test URL (/webhook-test/...)."
     },
     "actions": {
       "test": "Probar",
