@@ -114,12 +114,12 @@ Notes:
 - Put **`API_MASTER_KEY` and `DATABASE_PASSWORD` in Secret Manager**, not in
   `--set-env-vars`. Create them once:
   ```bash
-  printf 'owa_k1_db8f425aa90d44a06bf46a1378a7d3c509f690628a04f3c28fd1f683b99eb172' \
+  printf 'owa_k1_<generate-with-openssl-rand-hex-32>' \
     | gcloud secrets create openwa-api-master-key --data-file=-
   printf 'YOUR_DB_PASSWORD' \
     | gcloud secrets create openwa-db-password --data-file=-
   ```
-  (Rotate the API key value — the one above is a generated placeholder.)
+  (Always generate a fresh random master key via `openssl rand -hex 32`.)
 - `--memory=1Gi` is generous for Baileys (no Chromium). You can likely drop to
   512Mi after observing real usage.
 
